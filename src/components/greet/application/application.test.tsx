@@ -19,6 +19,9 @@ describe('Application', () => {
     const paragraphElement = screen.getByText('All fields are mandatory'); // accepts also 'selector' option - same as getByLabelText
     expect(paragraphElement).toBeInTheDocument();
 
+    const imageElement = screen.getByAltText('a person with a laptop');
+    expect(imageElement).toBeInTheDocument();
+
     const nameElement = screen.getByRole('textbox', { name: 'Name' }); // element
     expect(nameElement).toBeInTheDocument(); // assertion
 
