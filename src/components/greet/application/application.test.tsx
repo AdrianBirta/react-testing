@@ -1,3 +1,4 @@
+import exp from 'constants';
 import { Application } from './application';
 import { render, screen } from '@testing-library/react';
 
@@ -16,7 +17,13 @@ describe('Application', () => {
     expect(sectionHeading).toBeInTheDocument();
 
     const nameElement = screen.getByRole('textbox', { name: 'Name' }); // element
-    expect(nameElement).toBeInTheDocument(); // assection
+    expect(nameElement).toBeInTheDocument(); // assertion
+
+    const nameElement2 = screen.getByLabelText('Name', {
+      // search for the label with 'Name' text
+      selector: 'input', // and find the element associate with that label - element 'input'
+    });
+    expect(nameElement2).toBeInTheDocument();
 
     const bioElement = screen.getByRole('textbox', {
       name: 'Bio',
@@ -28,6 +35,11 @@ describe('Application', () => {
 
     const termsElement = screen.getByRole('checkbox');
     expect(termsElement).toBeInTheDocument();
+
+    const termsElement2 = screen.getByLabelText(
+      'I agree to the terms and conditions'
+    );
+    expect(termsElement2).toBeInTheDocument();
 
     const submitButtonElement = screen.getByRole('button');
     expect(submitButtonElement).toBeInTheDocument();
