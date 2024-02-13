@@ -1,3 +1,15 @@
+// Priority Order for Queries
+// "Your test should resemble how users interact with your code (component, page, etc.) as much as possible"
+// 1. getByRole() - top prefference about everything, if not helps then getByLabelText()
+// 2. getByLabelText() - really good for form fields, if not helps then getByPlaceholderText()
+// 3. getByPlaceholderText() - is not for substitut for getByLabelText()
+// 4. getByText() - outside of forms, can be used to find non-interactiv elements like divs, spans and paragraphs
+// 5. getByDisplayValue() - the current value of a form element can be useful when navigating a page with filled in values and get by display value is the query that an help you
+// *
+// 6. getByAltText() - if your element supports img, area, input or any custom element
+// 7. getByTitle() - using the title attribute
+// 8. getByTestId()
+
 export const Application = () => {
   return (
     <>
