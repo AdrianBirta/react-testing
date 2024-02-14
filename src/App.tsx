@@ -1,10 +1,14 @@
 import './App.css';
+import { Application } from './components/application/application';
+import { Counter } from './components/counter/counter';
 import { Skills } from './components/skills/skills';
 
 function App() {
   return (
     <div className="App">
-      <Skills skills={['HTML', 'CSS']} />
+      {/* <Application />
+      <Skills skills={['HTML', 'CSS']} /> */}
+      <Counter />
     </div>
   );
 }
