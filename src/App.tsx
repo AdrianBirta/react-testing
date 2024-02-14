@@ -21,3 +21,11 @@ export default App;
 // Implementation details
 // Third party code
 // Code that is not important from a user point of view
+
+// # RTL Queries
+// getBy & getAllBy
+// queryBy & queryAllBy
+// findBy & findAllBy
+// # Manual queries
+// You can use the regular querySelector DOM API to find elements
+// Not recommended because those attributes are INVISIBLE to the user
