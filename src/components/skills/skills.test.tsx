@@ -30,4 +30,22 @@ describe('Skills', () => {
     }); // return null if no elements match, return empty array for queryAll
     expect(startLearningButton).not.toBeInTheDocument();
   });
+
+  test('Start learning button is eventually displayed', async () => {
+    render(<Skills skills={skills} />);
+    const startLearningButton = await screen.findByRole(
+      'button',
+      {
+        name: 'Start learning',
+      },
+      {
+        timeout: 2000, // set to 2000 ms, by default is 1000 ms
+      }
+    );
+    // findBy - returns a Promise which resolves when an element is found which matches the given query
+    // findAllBy - returns a Promise which resolves an array of elements
+    // default timeout 1000 ms
+
+    expect(startLearningButton).toBeInTheDocument();
+  });
 });
