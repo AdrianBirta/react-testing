@@ -1,4 +1,3 @@
-import exp from 'constants';
 import { Application } from './application';
 import { render, screen } from '@testing-library/react';
 
@@ -18,6 +17,30 @@ describe('Application', () => {
 
     const paragraphElement = screen.getByText('All fields are mandatory'); // accepts also 'selector' option - same as getByLabelText
     expect(paragraphElement).toBeInTheDocument();
+
+    const paragraphElement2 = screen.getByText('l fields are mandator', {
+      exact: false,
+    }); // substring match - TextMatch string
+    expect(paragraphElement2).toBeInTheDocument();
+
+    const paragraphElement3 = screen.getByText('all fields are mandatory', {
+      exact: false,
+    }); // ignore case - TextMatch string
+    expect(paragraphElement3).toBeInTheDocument();
+
+    const paragraphElement4 = screen.getByText(/All fields/); // substring match regex - TextMatch regex
+    expect(paragraphElement4).toBeInTheDocument();
+
+    const paragraphElement5 = screen.getByText(/all fields/i); // substring match, ignore case - TextMatch regex
+    expect(paragraphElement5).toBeInTheDocument();
+
+    const paragraphElement6 = screen.getByText(/^all fields/i); // full string match, ignore case - TextMatch regex
+    expect(paragraphElement6).toBeInTheDocument();
+
+    const paragraphElement7 = screen.getByText((content) =>
+      content.startsWith('All')
+    );
+    expect(paragraphElement7).toBeInTheDocument(); // string match - TextMatch custom function
 
     const closeElement = screen.getByTitle('close');
     expect(closeElement).toBeInTheDocument();
